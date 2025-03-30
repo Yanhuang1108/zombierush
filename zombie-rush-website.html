@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zombie Rush - The Ultimate Zombie Survival Game</title>
+    <meta name="description" content="Play Zombie Rush online - Fight off relentless zombie hordes in this action-packed survival game. Team up with friends, upgrade weapons, and prove you're the last survivor standing!">
+    <link rel="canonical" href="https://zombie-rush.com/">
+    <meta name="keywords" content="zombie rush, zombie game, survival game, online zombie game, multiplayer zombie, zombie apocalypse">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        apple: {
+                            blue: '#007AFF',
+                            red: '#FF3B30',
+                            green: '#34C759',
+                            gray: '#8E8E93',
+                            black: '#000000',
+                            darkgray: '#1C1C1E',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @media (max-width: 640px) {
+            .game-container {
+                height: 80vh;
+            }
+        }
+        
+        .game-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .game-container.fullbrowser {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            max-width: 100%;
+            z-index: 9999;
+            border: none;
+            border-radius: 0;
+        }
+        
+        .game-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .control-button {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .exit-fullbrowser {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+    <!-- Header -->
+    <header class="bg-apple-darkgray text-white py-4 shadow-md">
+        <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 sm:mb-0">
+                <span class="text-2xl font-bold tracking-tight text-apple-red">Zombie Rush</span>
+            </div>
+            <nav class="flex space-x-6">
+                <a href="#features" class="hover:text-apple-red transition-colors">Features</a>
+                <a href="#how-to-play" class="hover:text-apple-red transition-colors">How to Play</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Game Section -->
+    <section id="game" class="py-12 pt-16">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold mb-8 text-center text-apple-red">Zombie Rush</h1>
+            
+            <!-- Game controls -->
+            <div class="game-controls max-w-6xl mx-auto">
+                <button id="fullbrowser-btn" class="control-button bg-apple-blue text-white hover:bg-blue-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
+                        <path d="M21 8V5a2 2 0 0 0-2-2h-3"></path>
+                        <path d="M3 16v3a2 2 0 0 0 2 2h3"></path>
+                        <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
+                    </svg>
+                    Full Browser
+                </button>
+                <button id="fullscreen-btn" class="control-button bg-apple-green text-white hover:bg-green-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <polyline points="9 21 3 21 3 15"></polyline>
+                        <line x1="21" y1="3" x2="14" y2="10"></line>
+                        <line x1="3" y1="21" x2="10" y2="14"></line>
+                    </svg>
+                    Fullscreen
+                </button>
+            </div>
+            
+            <!-- Game container -->
+            <div id="game-container" class="game-container w-full aspect-video max-w-6xl mx-auto border-4 border-apple-darkgray rounded-lg overflow-hidden shadow-xl">
+                <div class="game-wrapper">
+                    <iframe id="game-iframe" src="https://kdata1.com/2023/12/zombie_rush/" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; right: 0; bottom: 0;" frameborder="0" allow="gamepad *; fullscreen *;"></iframe>
+                </div>
+            </div>
+            
+            <!-- Exit fullbrowser button -->
+            <button id="exit-fullbrowser" class="exit-fullbrowser">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+                Exit Full Browser
+            </button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">Key Features</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <div class="text-apple-blue text-4xl mb-4">👥</div>
+                    <h3 class="text-xl font-semibold mb-3">Team Up with Friends</h3>
+                    <p>Join forces with other survivors to form a powerful team and increase your chances of survival in the zombie apocalypse.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <div class="text-apple-red text-4xl mb-4">🔫</div>
+                    <h3 class="text-xl font-semibold mb-3">Diverse Arsenal</h3>
+                    <p>Choose from a wide range of weapons, including rifles, pistols, melee weapons like sticks and swords, and special weapons to annihilate zombies.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <div class="text-apple-green text-4xl mb-4">⬆️</div>
+                    <h3 class="text-xl font-semibold mb-3">Upgrade & Dominate</h3>
+                    <p>Enhance your weapons, defenses, and combat skills to become the ultimate survivor against the undead hordes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Play Section -->
+    <section id="how-to-play" class="py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">How to Play</h2>
+            
+            <div class="bg-white p-8 rounded-lg shadow-lg max-w-4xl mx-auto">
+                <p class="mb-6">
+                    Zombies attack in relentless waves—your mission is to eliminate them all to progress. Equip yourself with guns, grenades, swords, or unique weapons to fend off the undead. Each level brings tougher challenges, testing your strategy and reflexes.
+                </p>
+                
+                <h3 class="text-xl font-semibold mb-4">Simple Controls:</h3>
+                <ul class="list-disc pl-6 mb-6">
+                    <li class="mb-2">Move your character using arrow keys or WASD.</li>
+                    <li>Click to attack with your main weapon.</li>
+                </ul>
+                
+                <div class="text-center mt-8">
+                    <p class="text-xl font-bold mb-4">Are you ready to face the zombie apocalypse?</p>
+                    <a href="#game" class="bg-apple-green hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full transition-colors inline-block">
+                        Play Zombie Rush Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">About Zombie Rush</h2>
+            
+            <div class="bg-white p-8 rounded-lg shadow-lg max-w-4xl mx-auto">
+                <p class="mb-6">
+                    In a world overrun by zombies, you are the last hope for survival. Zombie Rush throws you into intense, non-stop action where your only goal is to fight off relentless zombie hordes and stay alive as long as possible. With thrilling gameplay, diverse weapons, and strategic upgrades, every moment is a battle for survival.
+                </p>
+                
+                <p class="font-bold text-center text-xl mt-8 mb-4">
+                    Join Zombie Rush now and prove you're the last survivor standing!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-apple-darkgray text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-xl font-bold text-apple-red">Zombie Rush</p>
+                    <p class="text-sm text-gray-400">The Ultimate Zombie Survival Game</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#features" class="hover:text-apple-red transition-colors">Features</a>
+                    <a href="#how-to-play" class="hover:text-apple-red transition-colors">How to Play</a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
+                <p>&copy; 2025 Zombie Rush. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for fullscreen functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameContainer = document.getElementById('game-container');
+            const gameIframe = document.getElementById('game-iframe');
+            const fullscreenBtn = document.getElementById('fullscreen-btn');
+            const fullbrowserBtn = document.getElementById('fullbrowser-btn');
+            const exitFullbrowserBtn = document.getElementById('exit-fullbrowser');
+            
+            // Fullscreen button
+            fullscreenBtn.addEventListener('click', function() {
+                if (gameIframe.requestFullscreen) {
+                    gameIframe.requestFullscreen();
+                } else if (gameIframe.webkitRequestFullscreen) { /* Safari */
+                    gameIframe.webkitRequestFullscreen();
+                } else if (gameIframe.msRequestFullscreen) { /* IE11 */
+                    gameIframe.msRequestFullscreen();
+                }
+            });
+            
+            // Full browser button
+            fullbrowserBtn.addEventListener('click', function() {
+                gameContainer.classList.add('fullbrowser');
+                exitFullbrowserBtn.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                // 确保游戏容器占据整个视窗
+                gameContainer.style.width = '100vw';
+                gameContainer.style.left = '0';
+                gameContainer.style.right = '0';
+            });
+            
+            // Exit full browser button
+            exitFullbrowserBtn.addEventListener('click', function() {
+                gameContainer.classList.remove('fullbrowser');
+                exitFullbrowserBtn.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                // 重置游戏容器的样式
+                gameContainer.style.width = '';
+                gameContainer.style.left = '';
+                gameContainer.style.right = '';
+            });
+            
+            // Handle ESC key for exiting full browser mode
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && gameContainer.classList.contains('fullbrowser')) {
+                    gameContainer.classList.remove('fullbrowser');
+                    exitFullbrowserBtn.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
